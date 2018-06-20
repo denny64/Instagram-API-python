@@ -69,6 +69,7 @@ class InstagramAPI:
         self.isLoggedIn = False
         self.LastResponse = None
         self.s = requests.Session()
+        self.error = None
 
     def setUser(self, username, password):
         self.username = username
@@ -975,6 +976,7 @@ class InstagramAPI:
             return True
         else:
             print("Request return " + str(response.status_code) + " error!")
+            self.error = response.status_code
             # for debugging
             try:
                 self.LastResponse = response
